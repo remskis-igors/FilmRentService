@@ -158,9 +158,7 @@ public class FilmRentService implements FilmDao, PersonDao {
             System.out.println(thisPersons + " (has " + count + " of films)");
         }
         System.out.println("Films are available: " + this.getAvailableFilms().size());
-         System.out.println("Films are not available: " + this.getUnAvailableFilms());
+        System.out.println("Films are not available: " + this.getUnAvailableFilms());
         System.out.println("-= EOF =-");
-
-
     }
 }
