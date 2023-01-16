@@ -58,11 +58,10 @@ public class FilmWareHouse implements FilmDao {
 
     @Override
     public List<Film> getAvailableFilms() {
-        return null;
+       return this.getFilms().stream().filter(film -> film.getPerson() == null).collect(Collectors.toList());
     }
 
     @Override
     public List<Film> getUnAvailableFilms() {
-        return null;
-    }
+        return this.getFilms().stream().filter(film -> film.getPerson() != null).collect(Collectors.toList());    }
 }
