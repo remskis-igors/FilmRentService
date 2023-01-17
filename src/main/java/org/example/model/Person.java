@@ -28,7 +28,7 @@ public class Person {
     }
 
     public String toString() {
-        return this.getName() + " has been rented " + this.getMaximumFilmsOnPerson() + " films";
+        return this.getName() + " can rent " + this.getMaximumFilmsOnPerson() + " films";
 
     }
 }

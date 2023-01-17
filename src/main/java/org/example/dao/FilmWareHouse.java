@@ -27,9 +27,7 @@ public class FilmWareHouse implements FilmDao {
 
     @Override
     public boolean checkOut(Film film, Person person) {
-        if (film == null) {
-            return false;
-        }
+        if (film == null) { return false;}
         int filmsOnRentPerPerson = this.getFilmsPerPerson(person).size();
         boolean canCheckOut = (film.getPerson() == null) && (filmsOnRentPerPerson < person.getMaximumFilmsOnPerson());
         if (canCheckOut) {
@@ -49,7 +47,7 @@ public class FilmWareHouse implements FilmDao {
         }
         return checkIn;
     }
-    @Override
+
     public List<Film> getFilmsPerPerson(Person p1) {
         return this.getFilms().stream().filter(aFilm->{
             boolean filmCheckedOut = aFilm.getPerson() != null;

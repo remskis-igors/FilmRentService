@@ -7,10 +7,9 @@ import org.example.dao.PersonRegister;
 import org.example.model.Film;
 import org.example.model.Person;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class FilmRentService implements FilmDao, PersonDao {
 
@@ -88,12 +87,11 @@ public class FilmRentService implements FilmDao, PersonDao {
         personRegister.removePeople(p1);
 
     }
-
+    @Override
     public String toString() {
         return this.getName() + " " + this.getFilms().size() + "  films  " + this.getPeople().size() + " films ";
     }
 
-    private static final Logger LOGGER = Logger.getLogger(FilmRentService.class.getName());
 
     public static void main(String[] args) {
         FilmRentService filmRentService = new FilmRentService("SuperCinemaKosherRent");
@@ -105,25 +103,36 @@ public class FilmRentService implements FilmDao, PersonDao {
         Person peteris = initPerson(filmRentService, "Peteris");
         Person mara = initPerson(filmRentService, "Mara");
 
-        LOGGER.info("LOGGER FilmService " + filmRentService.getName() + " was created");
+        System.out.println("LOGGER FilmService " + filmRentService.getName() + " was created");
         filmRentService.printStatus();
 
 
-        LOGGER.info("LOGGER CheckIn of films ");
+        System.out.println("LOGGER CheckIn of films ");
         filmRentService.checkIn(first);
         filmRentService.checkIn(second);
         filmRentService.checkIn(third);
 
-        LOGGER.info("LOGGER all films checked in ");
+        System.out.println("LOGGER all films checked in ");
         filmRentService.printStatus();
 
         filmRentService.checkOut(first, peteris);
+        filmRentService.printStatus();
+
+
         filmRentService.checkOut(third, mara);
+        filmRentService.printStatus();
 
+        filmRentService.checkOut(second, maris);
+        filmRentService.printStatus();
 
-        filmRentService.getUnAvailableFilms();
+        filmRentService.getAvailableFilms();
         filmRentService.getUnAvailableFilms();
         filmRentService.getPeople();
+
+
+        filmRentService.checkIn(first);
+        filmRentService.printStatus();
+
 
 
     }
@@ -153,11 +162,11 @@ public class FilmRentService implements FilmDao, PersonDao {
         for (Film thisFilms : this.getFilms()) {
             System.out.println(thisFilms);
         }
-        for (Person thisPersons : this.getPeople()) {
-            int count = this.getFilmsPerPerson(thisPersons).size();
-            System.out.println(thisPersons + " (has " + count + " of films)");
+        for (Person thisPeople : this.getPeople()) {
+            int count = this.getFilmsPerPerson(thisPeople).size();
+            System.out.println(thisPeople + " (has " + count + " of films)");
         }
-        System.out.println("Films are available: " + this.getAvailableFilms().size());
+        System.out.println("Films are available: " + this.getAvailableFilms().size() + this.getAvailableFilms());
         System.out.println("Films are not available: " + this.getUnAvailableFilms());
         System.out.println("-= EOF =-");
     }
