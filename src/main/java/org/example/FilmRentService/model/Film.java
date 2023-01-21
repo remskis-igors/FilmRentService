@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.FilmRentService.model;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
@@ -19,9 +19,6 @@ public class Film  {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getGenre() {
         return genre;
@@ -46,6 +43,6 @@ public class Film  {
         } else {
             available = " booked with Customer : " + this.getPerson().getName();
         }
-        return StringEscapeUtils.unescapeXml(this.getTitle()) + " by " +this.getGenre() + ";";
+        return StringEscapeUtils.unescapeXml(this.getTitle()) + " is: " +this.getGenre() + ";";
     }
 }

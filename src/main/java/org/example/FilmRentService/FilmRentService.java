@@ -1,11 +1,11 @@
-package org.example;
+package org.example.FilmRentService;
 
-import org.example.dao.FilmDao;
-import org.example.dao.FilmWareHouse;
-import org.example.dao.PersonDao;
-import org.example.dao.PersonRegister;
-import org.example.model.Film;
-import org.example.model.Person;
+import org.example.FilmRentService.dao.FilmDao;
+import org.example.FilmRentService.dao.FilmWareHouse;
+import org.example.FilmRentService.dao.PersonDao;
+import org.example.FilmRentService.dao.PersonRegister;
+import org.example.FilmRentService.model.Film;
+import org.example.FilmRentService.model.Person;
 
 
 import java.util.List;
@@ -92,12 +92,11 @@ public class FilmRentService implements FilmDao, PersonDao {
         return this.getName() + " " + this.getFilms().size() + "  films  " + this.getPeople().size() + " films ";
     }
 
-
     public static void main(String[] args) {
         FilmRentService filmRentService = new FilmRentService("SuperCinemaKosherRent");
-        Film first = initFilm(filmRentService, "GoodBlessLatvia", "Fantasy");
-        Film second = initFilm(filmRentService, "GodBlessRiga", "Horror");
-        Film third = initFilm(filmRentService, "Perfect evening", "Porno");
+        Film first = initFilm(filmRentService, "GoodBlessLatvia", "Fantasy movie");
+        Film second = initFilm(filmRentService, "GodBlessRiga", "Horror movie");
+        Film third = initFilm(filmRentService, "Perfect evening", "Porno movie");
 
         Person maris = initPerson(filmRentService, "Maris");
         Person peteris = initPerson(filmRentService, "Peteris");
@@ -105,7 +104,6 @@ public class FilmRentService implements FilmDao, PersonDao {
 
         System.out.println("LOGGER FilmService " + filmRentService.getName() + " was created");
         filmRentService.printStatus();
-
 
         System.out.println("LOGGER CheckIn of films ");
         filmRentService.checkIn(first);
@@ -157,6 +155,9 @@ public class FilmRentService implements FilmDao, PersonDao {
         return film;
     }
 
+    /**
+     * helper class to print the status of the film warehouse
+     */
     private void printStatus() {
         System.out.println(" Status print of FilmService \n" + this.toString());
         for (Film thisFilms : this.getFilms()) {

@@ -24,7 +24,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.example.FilmRentService</mainClass>
+                            <mainClass>org.example.FilmRentService.FilmRentService</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
