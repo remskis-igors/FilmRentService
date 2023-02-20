@@ -10,9 +10,9 @@ public class Film  {
 
     private Person person;
 
-    public Film(String string) {
-        this.title = string;
-        this.genre = "genre";
+    public Film(String title, String genre) {
+        this.title = title;
+        this.genre = genre;
     }
 
     public String getTitle() {

@@ -6,15 +6,19 @@ import org.example.FilmRentService.dao.PersonDao;
 import org.example.FilmRentService.dao.PersonRegister;
 import org.example.FilmRentService.model.Film;
 import org.example.FilmRentService.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 import java.util.List;
 
 
-public class FilmRentService implements FilmDao, PersonDao {
+public class FilmRentService {
 
     private String name;
+    @Autowired
     private FilmWareHouse filmWareHouse;
+    @Autowired
     private PersonRegister personRegister;
 
     /**
@@ -32,128 +36,96 @@ public class FilmRentService implements FilmDao, PersonDao {
         return name;
     }
 
-    @Override
+
     public void removeFilm(Film film) {
         this.filmWareHouse.removeFilm(film);
     }
 
-    @Override
+
     public void addFilm(Film film) {
         this.filmWareHouse.addFilm(film);
     }
 
-    @Override
     public boolean checkOut(Film film, Person person) {
         return filmWareHouse.checkOut(film, person);
     }
 
-    @Override
     public boolean checkIn(Film film) {
         return filmWareHouse.checkIn(film);
     }
 
-    @Override
     public List<Film> getFilmsPerPerson(Person p1) {
         return filmWareHouse.getFilmsPerPerson(p1);
     }
 
-    @Override
+
     public List<Film> getFilms() {
         return filmWareHouse.getFilms();
     }
 
-    @Override
     public List<Film> getAvailableFilms() {
         return filmWareHouse.getAvailableFilms();
     }
 
-    @Override
     public List<Film> getUnAvailableFilms() {
         return filmWareHouse.getUnAvailableFilms();
     }
 
-    @Override
     public List<Person> getPeople() {
         return personRegister.getPeople();
     }
 
-    @Override
     public void addPeople(Person p1) {
         personRegister.addPeople(p1);
     }
 
-    @Override
     public void removePeople(Person p1) {
         personRegister.removePeople(p1);
 
     }
-    @Override
     public String toString() {
         return this.getName() + " " + this.getFilms().size() + "  films  " + this.getPeople().size() + " films ";
     }
 
     public static void main(String[] args) {
-        FilmRentService filmRentService = new FilmRentService("SuperCinemaKosherRent");
-        Film first = initFilm(filmRentService, "GoodBlessLatvia", "Fantasy movie");
-        Film second = initFilm(filmRentService, "GodBlessRiga", "Horror movie");
-        Film third = initFilm(filmRentService, "Perfect evening", "Porno movie");
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(ServiceConfig.class);
 
-        Person maris = initPerson(filmRentService, "Maris");
-        Person peteris = initPerson(filmRentService, "Peteris");
-        Person mara = initPerson(filmRentService, "Mara");
+        FilmRentService filmRentService
+                = (FilmRentService)context.getBean("filmRentService");
 
-        System.out.println("LOGGER FilmService " + filmRentService.getName() + " was created");
+       System.out.println(filmRentService.getFilms().size());
+       System.out.println(filmRentService.getPeople().size());
+
+        Film first = filmRentService.getFilms().get(0);
+        Film second = filmRentService.getFilms().get(1);
+        Film third = filmRentService.getFilms().get(2);
+
+        Person maris = filmRentService.getPeople().get(0);
+        Person peteris =  filmRentService.getPeople().get(1);
+        Person mira = filmRentService.getPeople().get(2);
+
+        System.out.println("FilmRentService created");
         filmRentService.printStatus();
 
-        System.out.println("LOGGER CheckIn of films ");
+        System.out.println("Check out first catalogue film to first person ");
+        filmRentService.checkOut(first, maris);
+        filmRentService.printStatus();
+
+        System.out.println("check out check in actions to first and second person");
         filmRentService.checkIn(first);
-        filmRentService.checkIn(second);
+        filmRentService.checkOut(second, peteris);
+        filmRentService.printStatus();
+
+        System.out.println("check  in to third person  third film ");
+        filmRentService.checkOut(third,mira);
+        filmRentService.printStatus();
+        System.out.println("check  out to third person  third film ");
         filmRentService.checkIn(third);
-
-        System.out.println("LOGGER all films checked in ");
         filmRentService.printStatus();
-
-        filmRentService.checkOut(first, peteris);
-        filmRentService.printStatus();
-
-
-        filmRentService.checkOut(third, mara);
-        filmRentService.printStatus();
-
-        filmRentService.checkOut(second, maris);
-        filmRentService.printStatus();
-
-        filmRentService.getAvailableFilms();
-        filmRentService.getUnAvailableFilms();
-        filmRentService.getPeople();
-
-
-        filmRentService.checkIn(first);
-        filmRentService.printStatus();
-
-
 
     }
 
-    /**
-     * helper class to init person to film warehouse
-     */
-    public static Person initPerson(FilmRentService filmRentService, String personName) {
-        Person person = new Person();
-        person.setName(personName);
-        filmRentService.addPeople(person);
-        return person;
-    }
-
-    /**
-     * helper class to init film to film warehouse
-     */
-    public static Film initFilm(FilmRentService filmRentService, String filmName, String genre) {
-        Film film = new Film(filmName);
-        film.setGenre(genre);
-        filmRentService.addFilm(film);
-        return film;
-    }
 
     /**
      * helper class to print the status of the film warehouse
