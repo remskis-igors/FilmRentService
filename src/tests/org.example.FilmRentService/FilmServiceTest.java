@@ -58,7 +58,7 @@ public class FilmServiceTest implements ApplicationContextAware {
     }
 
     @Test
-    public void testAddBook() {
+    public void testAddFilm() {
 
         assertEquals(3, filmRentService.getFilms().size());
         assertEquals(0, filmRentService.getFilms().indexOf(film));
