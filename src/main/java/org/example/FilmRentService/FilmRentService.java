@@ -1,8 +1,6 @@
 package org.example.FilmRentService;
 
-import org.example.FilmRentService.dao.FilmDao;
 import org.example.FilmRentService.dao.FilmWareHouse;
-import org.example.FilmRentService.dao.PersonDao;
 import org.example.FilmRentService.dao.PersonRegister;
 import org.example.FilmRentService.model.Film;
 import org.example.FilmRentService.model.Person;

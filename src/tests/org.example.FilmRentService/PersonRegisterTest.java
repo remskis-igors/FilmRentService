@@ -1,4 +1,4 @@
 package org.example.FilmRentService;
 
-public class PersonTest {
+public class PersonRegisterTest {
 }
