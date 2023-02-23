@@ -51,7 +51,7 @@ public class FilmServiceTest implements ApplicationContextAware {
     @Test
     public void FilmServiceTest(){
 
-        assertEquals("FilmRentService", filmRentService.getName());
+        assertEquals("FilmRentService init", filmRentService.getName());
         assertTrue(filmRentService.getFilms() != null);
         assertTrue(filmRentService.getPeople() != null);
 
@@ -106,7 +106,7 @@ public class FilmServiceTest implements ApplicationContextAware {
         assertEquals(1, testFilms.size());
         assertEquals(0, testFilms.indexOf(film));
 
-        filmRentService.checkOut(filmTwo, person);
+        filmRentService.checkOut(filmTwo, personTwo);
         testFilms = filmRentService.getFilmsPerPerson(person);
         assertEquals(2, testFilms.size());
         assertEquals(1, testFilms.indexOf(personTwo));

@@ -53,8 +53,8 @@ public class FilmRentService {
         return filmWareHouse.checkIn(film);
     }
 
-    public List<Film> getFilmsPerPerson(Person p1) {
-        return filmWareHouse.getFilmsPerPerson(p1);
+    public List<Film> getFilmsPerPerson(Person p) {
+        return filmWareHouse.getFilmsPerPerson(p);
     }
 
 

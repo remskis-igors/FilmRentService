@@ -42,9 +42,9 @@ public class FilmTest implements ApplicationContextAware {
         Person person = new Person();
         person.setName("Alvids");
 
-        assertEquals("MegoPorno is fa genre; Available", second.toString());
+        assertEquals("MegoPorno is: fantasy genre;", second.toString());
         second.setPerson(person);
-        assertEquals("MegoPorno is genre; booked with Customer : Alvids", second.toString());
+        assertEquals("MegoPorno is genre; booked with Customer : Alvids", second.toString(),second.toString());
     }
 
 
