@@ -37,8 +37,7 @@ public class ServiceConfig {
     }
 
     @Bean
-    public Person mira() {
-        return new Person("Mira");
+    public Person mira() { return new Person("Mira");
 
     }
 

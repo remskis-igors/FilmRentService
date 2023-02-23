@@ -2,18 +2,18 @@ package org.example.FilmRentService.dao;
 
 import org.example.FilmRentService.model.Film;
 import org.example.FilmRentService.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilmWareHouse implements FilmDao {
+    @Autowired
     private List<Film> films = new ArrayList<>();
 
-    @Override
-    public List<Film> getFilms() {
-        return films;
-    }
+    @Autowired
+    public List<Film> getFilms() {return films;}
 
     @Override
     public void removeFilm(Film film) {

@@ -1,8 +1,6 @@
 package org.example.FilmRentService;
 
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import org.example.FilmRentService.model.Film;
 import org.example.FilmRentService.model.Person;
 
 public class FilmTest extends TestCase {

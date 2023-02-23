@@ -43,6 +43,6 @@ public class Film  {
         } else {
             available = " booked with Customer : " + this.getPerson().getName();
         }
-        return StringEscapeUtils.unescapeXml(this.getTitle()) + " is: " +this.getGenre() + ";";
+        return StringEscapeUtils.unescapeXml(this.getTitle()) + " is: " +this.getGenre() + " genre;";
     }
 }

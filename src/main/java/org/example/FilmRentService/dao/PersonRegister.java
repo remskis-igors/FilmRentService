@@ -1,12 +1,13 @@
 package org.example.FilmRentService.dao;
 
 import org.example.FilmRentService.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonRegister implements PersonDao {
-
+    @Autowired
     private List<Person> people;
 
 

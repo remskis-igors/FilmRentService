@@ -30,6 +30,7 @@ public class FilmRentService {
         this.name = name;
         filmWareHouse = new FilmWareHouse();
         personRegister = new PersonRegister();
+
     }
 
     public String getName() {
@@ -88,14 +89,12 @@ public class FilmRentService {
     }
 
     public static void main(String[] args) {
+
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(ServiceConfig.class);
 
-        FilmRentService filmRentService
-                = (FilmRentService)context.getBean("filmRentService");
-
-       System.out.println(filmRentService.getFilms().size());
-       System.out.println(filmRentService.getPeople().size());
+        FilmRentService filmRentService = (FilmRentService)context.getBean("filmRentService");
+        filmRentService.printStatus();
 
         Film first = filmRentService.getFilms().get(0);
         Film second = filmRentService.getFilms().get(1);
@@ -112,10 +111,6 @@ public class FilmRentService {
         filmRentService.checkOut(first, maris);
         filmRentService.printStatus();
 
-        System.out.println("check out check in actions to first and second person");
-        filmRentService.checkIn(first);
-        filmRentService.checkOut(second, peteris);
-        filmRentService.printStatus();
 
         System.out.println("check  in to third person  third film ");
         filmRentService.checkOut(third,mira);

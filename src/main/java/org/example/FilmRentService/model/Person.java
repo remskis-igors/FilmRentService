@@ -6,6 +6,10 @@ public class Person {
 
     private int maximumFilmsOnPerson;
 
+    public Person(){
+        name = "name";
+        maximumFilmsOnPerson = 10;
+    }
     public Person(String name) {
         this.name = name;
         maximumFilmsOnPerson = 10;
