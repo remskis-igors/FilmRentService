@@ -107,6 +107,7 @@ public class FilmRentService {
 
         System.out.println("Check out first catalogue film to first person ");
         filmRentService.checkOut(first, maris);
+        filmRentService.checkOut(second, maris);
         filmRentService.printStatus();
 
 
@@ -115,6 +116,7 @@ public class FilmRentService {
         filmRentService.printStatus();
         System.out.println("check  out to third person  third film ");
         filmRentService.checkIn(third);
+        filmRentService.checkOut(third,peteris);
         filmRentService.printStatus();
 
     }

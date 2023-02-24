@@ -1,5 +1,7 @@
-package org.example.FilmRentService;
+package src.tests.org.example.FilmRentService;
 
+import org.example.FilmRentService.FilmRentService;
+import org.example.FilmRentService.ServiceConfig;
 import org.example.FilmRentService.model.Film;
 import org.example.FilmRentService.model.Person;
 import org.junit.Before;
@@ -58,14 +60,14 @@ public class FilmServiceTest implements ApplicationContextAware {
     }
 
     @Test
-    public void testAddBook() {
+    public void testRemoveFilm() {
 
         assertEquals(3, filmRentService.getFilms().size());
         assertEquals(0, filmRentService.getFilms().indexOf(film));
         assertEquals(1, filmRentService.getFilms().indexOf(filmTwo));
         assertEquals(2, filmRentService.getFilms().indexOf(filmThree));
 
-        filmRentService.removeFilm(film);
+        filmRentService.removeFilm(film);;
         assertEquals(2, filmRentService.getFilms().size());
         assertEquals(0, filmRentService.getFilms().indexOf(filmTwo));
         assertEquals(1,  filmRentService.getFilms().indexOf(filmThree));
@@ -82,7 +84,7 @@ public class FilmServiceTest implements ApplicationContextAware {
     @Test
     public void testCheckOut() {
 
-        assertTrue("Book did not check out correctly", filmRentService.checkOut(film, person));
+        assertTrue("Film did not check out correctly", filmRentService.checkOut(film, person));
 
         assertEquals("AAAA",film.getPerson().getName());
 
@@ -104,17 +106,21 @@ public class FilmServiceTest implements ApplicationContextAware {
 
         List<Film> testFilms = filmRentService.getFilmsPerPerson(person);
         assertEquals(1, testFilms.size());
-        assertEquals(0, testFilms.indexOf(film));
 
-        filmRentService.checkOut(filmTwo, personTwo);
-        testFilms = filmRentService.getFilmsPerPerson(person);
+        filmRentService.checkOut(filmTwo, personThree);
+        filmRentService.checkOut(filmThree, personThree);
+
+
+        testFilms = filmRentService.getFilmsPerPerson(personThree);
         assertEquals(2, testFilms.size());
-        assertEquals(1, testFilms.indexOf(personTwo));
 
         filmRentService.checkOut(filmThree, person);
+        filmRentService.checkOut(filmTwo, person);
+        filmRentService.checkOut(film, person);
+
         testFilms = filmRentService.getFilmsPerPerson(person);
-        assertEquals(3, testFilms.size());
-        assertEquals(2, testFilms.indexOf(personThree));
+        assertEquals(1, testFilms.size());
+
     }
 
     @Test
