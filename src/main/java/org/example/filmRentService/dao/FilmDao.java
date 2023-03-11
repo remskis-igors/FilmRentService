@@ -1,7 +1,7 @@
-package org.example.FilmRentService.dao;
+package org.example.filmRentService.dao;
 
-import org.example.FilmRentService.model.Film;
-import org.example.FilmRentService.model.Person;
+import org.example.filmRentService.model.Film;
+import org.example.filmRentService.model.Person;
 
 import java.util.List;
 

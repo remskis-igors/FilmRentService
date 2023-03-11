@@ -1,6 +1,6 @@
-package org.example.FilmRentService.dao;
+package org.example.filmRentService.dao;
 
-import org.example.FilmRentService.model.Person;
+import org.example.filmRentService.model.Person;
 
 import java.util.List;
 
@@ -11,5 +11,7 @@ public interface PersonDao {
     void addPeople(Person p1);
 
     void removePeople(Person p1);
+
+    Person findByName(String personName);
 }
 

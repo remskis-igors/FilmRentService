@@ -1,7 +1,7 @@
-package org.example.FilmRentService;
+package org.example.filmRentService;
 
-import org.example.FilmRentService.model.Film;
-import org.example.FilmRentService.model.Person;
+import org.example.filmRentService.model.Film;
+import org.example.filmRentService.model.Person;
 import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

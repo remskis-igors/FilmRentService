@@ -1,4 +1,4 @@
-package org.example.FilmRentService.model;
+package org.example.filmRentService.model;
 
 public class Person {
 

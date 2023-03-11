@@ -1,7 +1,7 @@
-package src.tests.org.example.FilmRentService;
+package org.example.filmRentService;
 
 import junit.framework.TestCase;
-import org.example.FilmRentService.model.Person;
+import org.example.filmRentService.model.Person;
 
 public class PersonRegisterTest extends TestCase {
 

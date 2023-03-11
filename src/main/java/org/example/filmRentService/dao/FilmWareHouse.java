@@ -1,11 +1,12 @@
-package org.example.FilmRentService.dao;
+package org.example.filmRentService.dao;
 
-import org.example.FilmRentService.model.Film;
-import org.example.FilmRentService.model.Person;
+import org.example.filmRentService.model.Film;
+import org.example.filmRentService.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class FilmWareHouse implements FilmDao {
@@ -54,12 +55,18 @@ public class FilmWareHouse implements FilmDao {
             return filmCheckedOut && aFilm.getPerson().getName().equals(p1.getName());
         }).collect(Collectors.toList());    }
 
-    @Override
     public List<Film> getAvailableFilms() {
        return this.getFilms().stream().filter(film -> film.getPerson() == null).collect(Collectors.toList());
     }
 
-    @Override
+
     public List<Film> getUnAvailableFilms() {
         return this.getFilms().stream().filter(film -> film.getPerson() != null).collect(Collectors.toList());    }
+
+    public Film findByTitle(String title){
+        if(title == null ){
+            return null;
+        }
+        return films.stream().filter(films  -> Objects.equals(films.getTitle().toLowerCase(), title.toLowerCase())).findFirst().orElse(null);
+    }
 }

@@ -1,4 +1,4 @@
-package org.example.FilmRentService.model;
+package org.example.filmRentService.model;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
@@ -10,6 +10,16 @@ public class Film  {
 
     private Person person;
 
+    public Film() {
+        this.title = "unknown title";
+        this.genre = "unknown genre";
+    }
+
+    public Film(String title){
+        this();
+        this.setTitle(title);
+
+    }
     public Film(String title, String genre) {
         this.title = title;
         this.genre = genre;
@@ -19,6 +29,9 @@ public class Film  {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getGenre() {
         return genre;
